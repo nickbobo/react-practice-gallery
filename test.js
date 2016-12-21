@@ -1,0 +1,1 @@
+console.info(require('minimist')(process.argv.slice(2)), __dirname, require('path'));
