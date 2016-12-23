@@ -8,7 +8,7 @@ let imageDatas=require('../data/imgdata.json');
 
 imageDatas=(function getImgUrl(imgDatasArr) {
 
-  console.info(imgDatasArr);
+  // console.info(imgDatasArr);
   for (var i=0, j=imgDatasArr.length; i <j; i++) {
     var oneimgData=imgDatasArr[i];
     oneimgData.imageURL=require('../images/' + oneimgData.fileName);
@@ -71,8 +71,8 @@ class ImgFigure extends React.Component {
     var igmFigureClassName='img-figure';
     igmFigureClassName += this.props.arrange.isInverse ? ' is-inverse' : '';
 
-    return ( 
-      <figure 
+    return (
+      <figure
       className={igmFigureClassName}
       style={styleObj}
       ref="figure"
@@ -81,14 +81,14 @@ class ImgFigure extends React.Component {
         src={this.props.data.imageURL}
         alt={ this.props.data.title}/>
         <figcaption>
-            <h2 className="img-title"> 
-             {this.props.data.title} 
-            </h2> 
+            <h2 className="img-title">
+             {this.props.data.title}
+            </h2>
             <div className='img-back'
             onClick={this.handleClick.bind(this)}>
-              <p> {this.props.data.desc} </p> 
-            </div> 
-        </figcaption> 
+              <p> {this.props.data.desc} </p>
+            </div>
+        </figcaption>
       </figure>);
 }
 }
@@ -118,10 +118,10 @@ class ControllerUnit extends React.Component {
       controllerUintClassName += ' is-inverse';
     }
 
-    return ( 
-      <span 
-        className={controllerUintClassName} 
-          onClick={this.handleClick.bind(this)}> 
+    return (
+      <span
+        className={controllerUintClassName}
+          onClick={this.handleClick.bind(this)}>
       </span>
     );
   }
@@ -315,18 +315,18 @@ class AppComponent extends React.Component {
             isCenter: false
           }
         }
-        imgFigures.push( 
+        imgFigures.push(
 
           <ImgFigure data={value}
           ref={'imgFigure' + index}
           key={index}
           arrange={this.state.imgArrangeArr[index]}
-          inverse={this.inverse(index).bind(this)} //多次修改this绑定！！
+          inverse={this.inverse(index).bind(this)}//多次修改this绑定！！
           center={this.center(index).bind(this)}
 
          />);
 
-          controllerUnits.push( 
+          controllerUnits.push(
             <ControllerUnit key={index}
             arrange={this.state.imgArrangeArr[index]}
             inverse={this.inverse(index).bind(this)}
@@ -335,11 +335,11 @@ class AppComponent extends React.Component {
           )
 
         }.bind(this));
-      return ( 
-        <section className="stage" ref="stage"> 
-          <section className="img-sec"> {imgFigures} </section>  
-          <nav className="controller-nav"> {controllerUnits} </nav>    
-        </section> 
+      return (
+        <section className="stage" ref="stage">
+          <section className="img-sec"> {imgFigures} </section>
+          <nav className="controller-nav"> {controllerUnits} </nav>
+        </section>
         );
   }
 }
